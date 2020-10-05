@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/miColor"
     tools:context=".MainActivity">
 
     <TextView
@@ -14,12 +15,12 @@
         android:text="Suma" />
     <EditText
         android:id="@+id/miTxt1"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
     />
     <EditText
         android:id="@+id/miTxt2"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
     <Button
