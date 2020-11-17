@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">perrito</string>
+    <string name="mostrar_perrito">Mostrar perrito</string>
+    <string name="autores">Autores</string>
+    <string name="option1">Hermoso</string>
+    <string name="option2">Lindo</string>
+    <string name="option3">Normal</string>
+    <string name="option4">Horroroso</string>
+    <string name="send_button">Enviar</string>
+</resources>
