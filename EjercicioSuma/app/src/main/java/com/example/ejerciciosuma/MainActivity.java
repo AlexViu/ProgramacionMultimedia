@@ -1,6 +1,8 @@
 package com.example.ejerciciosuma;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,30 +12,32 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button add_fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
+
+        add_fragment = (Button) findViewById(R.id.add_fragment);
 
 
-        final EditText num1 = (EditText) findViewById(R.id.num1);
-        final EditText num2 = (EditText) findViewById(R.id.num2);
-        final Button boton = (Button) findViewById(R.id.suma);
-        final TextView resul = (TextView) findViewById(R.id.resultado);
-
-        boton.setOnClickListener(new View.OnClickListener() {
+        add_fragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String numero1 = num1.getText().toString();
-                Integer num1 = Integer.parseInt(numero1);
-                String numero2 = num2.getText().toString();
-                Integer num2 = Integer.parseInt(numero2);
 
-                int result = num1 + num2;
+                //Paso 1: Obtener la instancia del administrador de fragmentos
+                FragmentManager fragmentManager = getSupportFragmentManager();
 
-                String resulf = "El resultado es: " + result;
-                resul.setText(resulf);
 
+                //Paso 2: Crear una nueva transacción
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                //Paso 3: Crear un nuevo fragmento y añadirlo
+                BlankFragment bfragment = new BlankFragment();
+                FragmentTransaction add = fragmentTransaction.add(R.id.container, bfragment);
+
+                fragmentTransaction.commit();
             }
         });
 
