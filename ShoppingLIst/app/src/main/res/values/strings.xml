@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ShoppingLIst</string>
+    <string name="create_button">CREAR</string>
+    <string name="shopping_list_hint">List Item</string>
+</resources>
