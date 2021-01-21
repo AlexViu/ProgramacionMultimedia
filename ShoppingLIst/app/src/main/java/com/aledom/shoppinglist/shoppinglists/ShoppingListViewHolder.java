@@ -1,4 +1,4 @@
-package com.aledom.shoppinglist;
+package com.aledom.shoppinglist.shoppinglists;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.aledom.shoppinglist.R;
+import com.aledom.shoppinglist.data.ShoppingList;
 
 public class ShoppingListViewHolder extends RecyclerView.ViewHolder{
     private final TextView mNameText;

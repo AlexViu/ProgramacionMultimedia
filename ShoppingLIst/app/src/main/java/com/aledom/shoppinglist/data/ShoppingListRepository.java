@@ -1,7 +1,12 @@
-package com.aledom.shoppinglist;
+package com.aledom.shoppinglist.data;
 
 import android.content.*;
 import androidx.lifecycle.*;
+
+import com.aledom.shoppinglist.data.ShoppingList;
+import com.aledom.shoppinglist.data.ShoppingListDao;
+import com.aledom.shoppinglist.data.ShoppingListDatabase;
+
 import java.util.*;
 
 public class ShoppingListRepository {
@@ -24,4 +29,6 @@ public class ShoppingListRepository {
                 () -> mShoppingListDao.insert(shoppingList)
         );
     }
+
+
 }

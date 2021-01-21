@@ -1,8 +1,12 @@
-package com.aledom.shoppinglist;
+package com.aledom.shoppinglist.shoppinglists;
 
 import android.app.*;
 import androidx.annotation.*;
 import androidx.lifecycle.*;
+
+import com.aledom.shoppinglist.data.ShoppingList;
+import com.aledom.shoppinglist.data.ShoppingListRepository;
+
 import java.util.List;
 
 public class ShoppingListViewModel extends AndroidViewModel {

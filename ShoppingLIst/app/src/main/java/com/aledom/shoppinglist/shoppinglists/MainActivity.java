@@ -1,4 +1,4 @@
-package com.aledom.shoppinglist;
+package com.aledom.shoppinglist.shoppinglists;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+
+import com.aledom.shoppinglist.R;
+import com.aledom.shoppinglist.addshoppinglist.AddShoppingListActivity;
 
 public class MainActivity extends AppCompatActivity {
 

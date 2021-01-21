@@ -1,14 +1,18 @@
-package com.aledom.shoppinglist;
+package com.aledom.shoppinglist.data;
 
 import android.content.*;
 
 import androidx.annotation.*;
 import androidx.room.*;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.*;
 
 
-@Database(entities = {ShoppingList.class}, version = 1, exportSchema = false)
+@Database(entities = {ShoppingList.class}, version = 2, exportSchema = false)
 public abstract class ShoppingListDatabase extends RoomDatabase {
 
     // Exposición de DAOs
@@ -30,6 +34,7 @@ public abstract class ShoppingListDatabase extends RoomDatabase {
                             context.getApplicationContext(), ShoppingListDatabase.class,
                             DATABASE_NAME)
                             .addCallback(mRoomCallback)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
@@ -42,15 +47,22 @@ public abstract class ShoppingListDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-            dbExecutor.execute(() -> {
+            /*dbExecutor.execute(() -> {
                 ShoppingListDao dao = INSTANCE.shoppingListDao();
 
-                ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo");
-                ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad");
+                List<ShoppingList> lists = new ArrayList<>();
+                for (int i = 0; i < 5; i++) {
+                    String id = UUID.randomUUID().toString();
+                    lists.add(new ShoppingList(id, "Lista " + (i+1), mCategory, mCreatedDate, mLastUpdated));
+                }
 
-                dao.insert(list1);
-                dao.insert(list2);
-            });
+                dao.insertShoppingLists(lists);
+                //ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo");
+                //ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad");
+
+                //dao.insert(list1);
+                //dao.insert(list2);
+            });*/
         }
     };
 }

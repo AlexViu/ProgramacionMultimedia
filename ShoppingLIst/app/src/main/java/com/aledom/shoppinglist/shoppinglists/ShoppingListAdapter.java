@@ -1,9 +1,11 @@
-package com.aledom.shoppinglist;
+package com.aledom.shoppinglist.shoppinglists;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.aledom.shoppinglist.data.ShoppingList;
 
 import java.util.List;
 
