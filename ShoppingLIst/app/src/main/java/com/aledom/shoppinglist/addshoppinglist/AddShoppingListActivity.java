@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.aledom.shoppinglist.R;
 import com.aledom.shoppinglist.data.ShoppingList;
+import com.aledom.shoppinglist.data.ShoppingListInsert;
 import com.aledom.shoppinglist.shoppinglists.ShoppingListViewModel;
 
 import java.util.UUID;
@@ -43,7 +44,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
 
                     // Crear entidad y guardarla
                     String id = UUID.randomUUID().toString();
-                    ShoppingList shoppingList = new ShoppingList(id, name, mCategory, mCreatedDate, mLastUpdated);
+                    ShoppingListInsert shoppingList = new ShoppingListInsert(id, name);
                     vm.insert(shoppingList);
 
                     // Ir a la lista

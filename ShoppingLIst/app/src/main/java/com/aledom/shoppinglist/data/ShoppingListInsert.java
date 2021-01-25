@@ -17,5 +17,4 @@ public class ShoppingListInsert {
         String[] categories = new String[]{"Fitness", "Eventos", "Rápidas"};
         return categories[new Random().nextInt(3)];
     }
-
 }

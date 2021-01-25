@@ -1,11 +1,13 @@
 package com.aledom.shoppinglist.shoppinglists;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.aledom.shoppinglist.R;
 import com.aledom.shoppinglist.addshoppinglist.AddShoppingListActivity;

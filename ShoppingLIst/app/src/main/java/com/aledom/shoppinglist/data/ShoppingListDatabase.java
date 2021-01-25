@@ -12,7 +12,7 @@ import java.util.UUID;
 import java.util.concurrent.*;
 
 
-@Database(entities = {ShoppingList.class}, version = 2, exportSchema = false)
+@Database(entities = {ShoppingList.class}, version = 3, exportSchema = false)
 public abstract class ShoppingListDatabase extends RoomDatabase {
 
     // Exposición de DAOs
