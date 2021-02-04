@@ -11,12 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aledom.shoppinglist.R;
 import com.aledom.shoppinglist.addshoppinglist.AddShoppingListActivity;
+import com.aledom.shoppinglist.editshoppinglist.EditShoppingListActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ShoppingListViewModel mViewModel;
     private RecyclerView mList;
     private ShoppingListAdapter mAdapter;
+    private List<CheckBox> mFilters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +34,53 @@ public class MainActivity extends AppCompatActivity {
         mViewModel = new ViewModelProvider(this, factory)
                 .get(ShoppingListViewModel.class);
 
+        setupFilters();
+
         setupList();
 
         setupFab();
+    }
+
+    private void setupFilters() {
+        mFilters = new ArrayList<>();
+        mFilters.add(findViewById(R.id.filter_1));
+        mFilters.add(findViewById(R.id.filter_2));
+        mFilters.add(findViewById(R.id.filter_3));
+
+        // Definir escucha de filtros
+        CompoundButton.OnCheckedChangeListener listener = (compoundButton, checked) -> {
+            String category = compoundButton.getText().toString();
+            if (checked) {
+                mViewModel.addFilter(category);
+            } else {
+                mViewModel.removeFilter(category);
+            }
+        };
+
+        // Setear escucha
+        for (CheckBox filter : mFilters) {
+            filter.setOnCheckedChangeListener(listener);
+        }
     }
 
     private void setupList() {
         mList = findViewById(R.id.list);
         mAdapter = new ShoppingListAdapter();
         mList.setAdapter(mAdapter);
+
+        // Asignar escucha de ítems
+        mAdapter.setItemListener(this::editShoppingList);
+
+        // Observar cambios de listas de compras
         mViewModel.getShoppingLists().observe(this, mAdapter::setItems);
+    }
+
+    private void editShoppingList(ShoppingListForList shoppingList) {
+        Intent intent = new Intent(MainActivity.this,
+                EditShoppingListActivity.class);
+        intent.putExtra(EditShoppingListActivity.EXTRA_SHOPPING_LIST_ID,
+                shoppingList.id);
+        startActivity(intent);
     }
 
     private void setupFab() {
@@ -49,5 +91,4 @@ public class MainActivity extends AppCompatActivity {
     private void addNewShoppingList() {
         startActivity(new Intent(this, AddShoppingListActivity.class));
     }
-    
 }

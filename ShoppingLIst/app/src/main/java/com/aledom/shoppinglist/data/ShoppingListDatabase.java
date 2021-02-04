@@ -12,7 +12,7 @@ import java.util.UUID;
 import java.util.concurrent.*;
 
 
-@Database(entities = {ShoppingList.class}, version = 3, exportSchema = false)
+@Database(entities = {ShoppingList.class}, version = 2, exportSchema = false)
 public abstract class ShoppingListDatabase extends RoomDatabase {
 
     // Exposición de DAOs
@@ -44,25 +44,26 @@ public abstract class ShoppingListDatabase extends RoomDatabase {
 
     private static final RoomDatabase.Callback mRoomCallback = new Callback() {
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-            /*dbExecutor.execute(() -> {
+            dbExecutor.execute(() -> {
                 ShoppingListDao dao = INSTANCE.shoppingListDao();
 
-                List<ShoppingList> lists = new ArrayList<>();
+                List<ShoppingListInsert> lists = new ArrayList<>();
+
                 for (int i = 0; i < 5; i++) {
-                    String id = UUID.randomUUID().toString();
-                    lists.add(new ShoppingList(id, "Lista " + (i+1), mCategory, mCreatedDate, mLastUpdated));
+
+                    ShoppingListInsert data = new ShoppingListInsert(
+                            String.valueOf(i),
+                            "Lista " + (i + 1)
+                    );
+
+                    lists.add(data);
                 }
 
                 dao.insertShoppingLists(lists);
-                //ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo");
-                //ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad");
-
-                //dao.insert(list1);
-                //dao.insert(list2);
-            });*/
+            });
         }
     };
 }
