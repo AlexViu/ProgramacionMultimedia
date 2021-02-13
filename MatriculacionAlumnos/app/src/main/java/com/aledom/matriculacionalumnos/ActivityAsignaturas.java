@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -42,10 +43,10 @@ public class ActivityAsignaturas extends AppCompatActivity {
 
     private void setupFab() {
         findViewById(R.id.floating_action_button)
-                .setOnClickListener(view -> addNewShoppingList());
+                .setOnClickListener(view -> addNewAsignatura());
     }
 
-    private void addNewShoppingList() {
-        //startActivity(new Intent(this, AddShoppingListActivity.class));
+    private void addNewAsignatura() {
+        startActivity(new Intent(this, AddAsignaturaActivity.class));
     }
 }

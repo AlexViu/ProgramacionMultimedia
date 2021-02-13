@@ -2,7 +2,6 @@ package com.aledom.matriculacionalumnos.data.asignatura;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -19,7 +18,7 @@ public interface AsignaturaDao {
     LiveData<List<Asignatura>> getAll();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = Asignatura.class)
-    void insert(AsignaturaInsert Asignatura);
+    void insert(Asignatura Asignatura);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAsignaturas(List<Asignatura> asignaturas);

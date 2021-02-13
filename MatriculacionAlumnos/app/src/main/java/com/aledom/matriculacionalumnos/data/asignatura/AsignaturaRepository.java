@@ -23,7 +23,7 @@ public class AsignaturaRepository {
         return AsignaturaLists;
     }
 
-    public void insert(AsignaturaInsert asignatura) {
+    public void insert(Asignatura asignatura) {
         MatriculacionDatabase.dbExecutor.execute(
                 () -> asignaturaDao.insert(asignatura)
         );

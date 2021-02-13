@@ -27,7 +27,7 @@ public class AsignaturaViewModel extends AndroidViewModel {
         return asignaturas;
     }
 
-    public void insert(AsignaturaInsert asignatura) {
+    public void insert(Asignatura asignatura) {
         mRepository.insert(asignatura);
     }
 

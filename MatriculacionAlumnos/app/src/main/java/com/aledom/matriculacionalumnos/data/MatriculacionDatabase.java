@@ -13,6 +13,7 @@ import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -46,25 +47,21 @@ public abstract class MatriculacionDatabase extends RoomDatabase {
     }
 
     private static final RoomDatabase.Callback mRoomCallback = new Callback() {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
+            @Override
+            public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                super.onCreate(db);
 
-            dbExecutor.execute(() -> {
-                //var
-                AsignaturaDao asignaturadao = INSTANCE.AsignaturaDao();
-                List<Asignatura> list_asignatura = new ArrayList<>();
+                dbExecutor.execute(() -> {
+                    AsignaturaDao dao = INSTANCE.AsignaturaDao();
 
+                    List<Asignatura> lists = new ArrayList<>();
+                    for (int i = 0; i < 5; i++) {
+                        String id = UUID.randomUUID().toString();
+                        lists.add(new Asignatura( "Lista " + (i+1)));
+                    }
 
-                Asignatura list1 = new Asignatura("Matematicas");
-                Asignatura list2 = new Asignatura("Ingles");
-
-
-                list_asignatura.add(list1);
-                list_asignatura.add(list2);
-
-                asignaturadao.insertAsignaturas(list_asignatura);
-            });
-        }
-    };
+                    dao.insertAsignaturas(lists);
+                });
+            }
+        };
 }
