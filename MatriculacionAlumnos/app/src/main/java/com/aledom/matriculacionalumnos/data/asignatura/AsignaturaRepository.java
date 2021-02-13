@@ -18,17 +18,17 @@ public class AsignaturaRepository {
         asignaturaDao = db.AsignaturaDao();
         AsignaturaLists = asignaturaDao.getAll();
     }
-    //para obtener lista asignaturas de db
+
     public LiveData<List<Asignatura>> getAllAsignaturas() {
         return AsignaturaLists;
     }
-    //para insertar asignatura a db
+
     public void insert(AsignaturaInsert asignatura) {
         MatriculacionDatabase.dbExecutor.execute(
                 () -> asignaturaDao.insert(asignatura)
         );
     }
-    //para actualizar info de asignatura en bd
+
     public void updateAsignatura(Asignatura Asignatura) {
         MatriculacionDatabase.dbExecutor.execute(
                 () -> asignaturaDao.updateAsignatura(Asignatura)

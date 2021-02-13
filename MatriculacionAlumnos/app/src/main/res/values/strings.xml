@@ -2,4 +2,6 @@
     <string name="app_name">MatriculacionAlumnos</string>
     <string name="boton1">Asignaturas</string>
     <string name="boton2">Alumnos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
