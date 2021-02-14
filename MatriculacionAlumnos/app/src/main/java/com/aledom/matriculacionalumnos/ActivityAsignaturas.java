@@ -22,7 +22,7 @@ public class ActivityAsignaturas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asignaturas);
 
-        getSupportActionBar().setTitle("Asignaturas");
+        getSupportActionBar().setTitle("Alumnos");
 
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());

@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaId;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoInsert;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoRepository;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoUpdate;

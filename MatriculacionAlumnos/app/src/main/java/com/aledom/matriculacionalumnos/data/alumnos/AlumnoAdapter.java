@@ -58,12 +58,14 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
 
     public class AlumnoViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView alumno_name;
+        private final TextView alumno_name, alumno_apellido, alumno_dni;
         private final ImageView delete, update;
 
         public AlumnoViewHolder(@NonNull View itemView) {
             super(itemView);
             alumno_name = itemView.findViewById(R.id.name);
+            alumno_apellido = itemView.findViewById(R.id.apellido);
+            alumno_dni = itemView.findViewById(R.id.dni);
             delete = itemView.findViewById(R.id.delete_button);
             update = itemView.findViewById(R.id.update_button);
 
@@ -90,6 +92,8 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
 
         public void bind(AlumnosForList item) {
             alumno_name.setText(item.name);
+            alumno_apellido.setText(item.apellidos);
+            alumno_dni.setText(item.dni);
 
         }
     }

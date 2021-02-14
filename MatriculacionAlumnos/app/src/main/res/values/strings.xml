@@ -5,4 +5,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_asignatura">Add asignatura</string>
+    <string name="add_alumno">add alumno</string>
+    <string name="nombre_alumno">Nombre Alumno</string>
+    <string name="apellidos_alumno">Apellidos alumno</string>
+    <string name="dni_alumno">DNI alumno</string>
 </resources>
