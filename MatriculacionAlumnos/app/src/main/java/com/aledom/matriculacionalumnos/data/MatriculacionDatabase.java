@@ -8,6 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.aledom.matriculacionalumnos.data.alumnos.Alumno;
+import com.aledom.matriculacionalumnos.data.alumnos.AlumnoDao;
 import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaDao;
 
@@ -17,12 +19,13 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Asignatura.class}, version = 1, exportSchema = false)
+@Database(entities = {Asignatura.class, Alumno.class}, version = 1, exportSchema = false)
 public abstract class MatriculacionDatabase extends RoomDatabase {
 
     public abstract AsignaturaDao AsignaturaDao();
+    public abstract AlumnoDao AlumnoDao();
 
-    private static final String DATABASE_NAME = "Matriculacion-bd";
+    private static final String DATABASE_NAME = "Matriculacion-bd2";
 
     private static MatriculacionDatabase INSTANCE;
 
@@ -61,7 +64,10 @@ public abstract class MatriculacionDatabase extends RoomDatabase {
                     }
 
                     dao.insertAsignaturas(lists);
+
                 });
             }
         };
+
+
 }

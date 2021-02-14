@@ -1,4 +1,4 @@
-package com.aledom.matriculacionalumnos.data.asignatura;
+package com.aledom.matriculacionalumnos.data.alumnos;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,56 +10,60 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aledom.matriculacionalumnos.R;
+import com.aledom.matriculacionalumnos.alumnos.AlumnosForList;
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
+import com.aledom.matriculacionalumnos.data.asignatura.AsiganturaAdapter;
 
 import java.util.List;
 
-public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.AsignaturaViewHolder>{
-    private List<AsignaturaForList> Asignaturas;
-    private ItemListener mItemListener;
+
+public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoViewHolder> {
+    private List<AlumnosForList> Alumnos;
+    private AlumnoAdapter.ItemListener mItemListener;
 
     @NonNull
     @Override
-    public AsignaturaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new AsignaturaViewHolder(
+    public AlumnoAdapter.AlumnoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new AlumnoAdapter.AlumnoViewHolder(
                 LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.asignatura_item, parent, false)
+                        .inflate(R.layout.alumno_item, parent, false)
         );
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull AsignaturaViewHolder holder, int position) {
-        AsignaturaForList item = Asignaturas.get(position);
+    public void onBindViewHolder(@NonNull AlumnoAdapter.AlumnoViewHolder holder, int position) {
+        AlumnosForList item = Alumnos.get(position);
         holder.bind(item);
     }
 
     @Override
     public int getItemCount() {
-        return Asignaturas == null ? 0 : Asignaturas.size();
+        return Alumnos == null ? 0 : Alumnos.size();
     }
 
-    public void setItems(List<AsignaturaForList> items) {
-        Asignaturas = items;
+    public void setItems(List<AlumnosForList> items) {
+        Alumnos = items;
         notifyDataSetChanged();
     }
 
-    public void setItemListener(ItemListener listener) {
+    public void setItemListener(AlumnoAdapter.ItemListener listener) {
         mItemListener = listener;
     }
 
     public interface ItemListener {
-        void onUpdateIconClicked(AsignaturaForList Asignatura);
-        void onDeleteIconClicked(AsignaturaForList Asignatura);
+        void onUpdateIconClicked(AlumnosForList Asignatura);
+        void onDeleteIconClicked(AlumnosForList Asignatura);
     }
 
-    public class AsignaturaViewHolder extends RecyclerView.ViewHolder {
+    public class AlumnoViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView asignatura_name;
+        private final TextView alumno_name;
         private final ImageView delete, update;
 
-        public AsignaturaViewHolder(@NonNull View itemView) {
+        public AlumnoViewHolder(@NonNull View itemView) {
             super(itemView);
-            asignatura_name = itemView.findViewById(R.id.name);
+            alumno_name = itemView.findViewById(R.id.name);
             delete = itemView.findViewById(R.id.delete_button);
             update = itemView.findViewById(R.id.update_button);
 
@@ -71,7 +75,7 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
 
         private void manageEvents(View view) {
             if (mItemListener != null) {
-                AsignaturaForList clickedItem = Asignaturas.get(getAdapterPosition());
+                AlumnosForList clickedItem = Alumnos.get(getAdapterPosition());
 
                 if (view.getId() == R.id.delete_button) {
                     mItemListener.onDeleteIconClicked(clickedItem);
@@ -84,8 +88,8 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
             }
         }
 
-        public void bind(AsignaturaForList item) {
-            asignatura_name.setText(item.name);
+        public void bind(AlumnosForList item) {
+            alumno_name.setText(item.name);
 
         }
     }

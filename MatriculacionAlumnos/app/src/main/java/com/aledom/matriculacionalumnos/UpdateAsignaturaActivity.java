@@ -7,17 +7,17 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaViewModel;
-import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaInsert;
+import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaUpdate;
 
 import java.util.UUID;
 
-public class AddAsignaturaActivity extends AppCompatActivity {
+public class UpdateAsignaturaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_asignatura);
+        setContentView(R.layout.activity_update_asignatura);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -41,8 +41,8 @@ public class AddAsignaturaActivity extends AppCompatActivity {
 
                     // Crear entidad y guardarla
                     String id = UUID.randomUUID().toString();
-                    AsignaturaInsert asignatura = new AsignaturaInsert(name);
-                    vm.insert(asignatura);
+                    AsignaturaUpdate asignatura = new AsignaturaUpdate(name);
+                    vm.updateAsignatura(asignatura);
 
                     // Ir a la lista
                     finish();

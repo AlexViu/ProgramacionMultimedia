@@ -6,16 +6,17 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaInsert;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaRepository;
+import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaUpdate;
 
 import java.util.List;
 
 public class AsignaturaViewModel extends AndroidViewModel {
-    //varibales
+
     private final AsignaturaRepository mRepository;
-    private final LiveData<List<Asignatura>> asignaturas;
+    private final LiveData<List<AsignaturaForList>> asignaturas;
+
 
     public AsignaturaViewModel(@NonNull Application application) {
         super(application);
@@ -23,16 +24,21 @@ public class AsignaturaViewModel extends AndroidViewModel {
         asignaturas = mRepository.getAllAsignaturas();
     }
 
-    public LiveData<List<Asignatura>> getAllAsignaturas() {
+    public LiveData<List<AsignaturaForList>> getAllAsignaturas() {
         return asignaturas;
     }
 
-    public void insert(Asignatura asignatura) {
+    public void insert(AsignaturaInsert asignatura) {
         mRepository.insert(asignatura);
     }
 
-    public void updateAsignatura(Asignatura Asignatura) {
+    public void updateAsignatura(AsignaturaUpdate Asignatura) {
         mRepository.updateAsignatura(Asignatura);
+    }
+
+    public void deleteAsignatura(AsignaturaForList Asignatura) {
+        AsignaturaId id = new AsignaturaId(Asignatura.id);
+        mRepository.deleteAsignatura(id);
     }
 
 }
