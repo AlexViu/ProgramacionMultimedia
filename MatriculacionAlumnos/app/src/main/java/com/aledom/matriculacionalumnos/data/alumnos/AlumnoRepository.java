@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.aledom.matriculacionalumnos.alumnos.AlumnoId;
 import com.aledom.matriculacionalumnos.alumnos.AlumnosForList;
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaId;
 import com.aledom.matriculacionalumnos.data.MatriculacionDatabase;
 
 
@@ -33,7 +32,11 @@ public class AlumnoRepository {
         );
     }
 
-
+    public void actualizar(AlumnoUpdate alumno) {
+        MatriculacionDatabase.dbExecutor.execute(
+                () -> alumnoDao.actualizar(alumno.name, alumno.apellidos, alumno.dni)
+        );
+    }
 
     public void deleteAlumno(AlumnoId id) {
         MatriculacionDatabase.dbExecutor.execute(

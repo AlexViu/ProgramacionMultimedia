@@ -13,4 +13,5 @@
     <string name="guardar">Guardar</string>
     <string name="nombre_asignatura">Nombre asignatura</string>
     <string name="codigo_asignatura">Codigo asignatura</string>
+    <string name="update_alumno">Update alumno</string>
 </resources>

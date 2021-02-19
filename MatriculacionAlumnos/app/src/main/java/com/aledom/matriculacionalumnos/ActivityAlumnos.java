@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.aledom.matriculacionalumnos.alumnos.AlumnoViewModel;
 import com.aledom.matriculacionalumnos.alumnos.AlumnosForList;
+import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoAdapter;
 
 public class ActivityAlumnos extends AppCompatActivity {
@@ -46,7 +47,7 @@ public class ActivityAlumnos extends AppCompatActivity {
 
             @Override
             public void onUpdateIconClicked(AlumnosForList Alumno) {
-
+                UpdateAlumno(Alumno);
             }
 
             @Override
@@ -71,4 +72,12 @@ public class ActivityAlumnos extends AppCompatActivity {
         startActivity(new Intent(this, AddAlumnoActivity.class));
     }
 
+    private void UpdateAlumno(AlumnosForList Alumnos) {
+        Intent intent = new Intent(this, UpdateAlumnoActivity.class);
+
+        intent.putExtra("name", Alumnos.name);
+        intent.putExtra("apellidos", Alumnos.apellidos);
+        intent.putExtra("dni", Alumnos.dni);
+        startActivity(intent);
+    }
 }

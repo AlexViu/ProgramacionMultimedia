@@ -8,33 +8,43 @@
     tools:context=".AddAsignaturaActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dni_alumno" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dni_alumno"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/codigo_asignatura" />
+        android:text="@string/nombre_alumno" />
 
     <EditText
-        android:id="@+id/codigo_asignatura"
+        android:id="@+id/name_alumno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nombre_asignatura" />
+        android:text="@string/apellidos_alumno" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/name_field"
+        android:id="@+id/apellido_alumno"
         />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_asignatura"
-        android:id="@+id/create_button"/>
+        android:text="@string/update_alumno"
+        android:id="@+id/create_button_alum"/>
 
 
 </LinearLayout>
