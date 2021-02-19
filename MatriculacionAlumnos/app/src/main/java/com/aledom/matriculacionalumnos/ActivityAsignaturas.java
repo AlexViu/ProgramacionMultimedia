@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.Toast;
 
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaViewModel;
 import com.aledom.matriculacionalumnos.data.asignatura.AsiganturaAdapter;
+import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 
 
 public class ActivityAsignaturas extends AppCompatActivity {
@@ -17,12 +20,13 @@ public class ActivityAsignaturas extends AppCompatActivity {
     private RecyclerView mList;
     private AsiganturaAdapter mAdapter;
     private String icon_identity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asignaturas);
 
-        getSupportActionBar().setTitle("Alumnos");
+        getSupportActionBar().setTitle("Asignaturas");
 
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
@@ -46,7 +50,7 @@ public class ActivityAsignaturas extends AppCompatActivity {
 
             @Override
             public void onUpdateIconClicked(AsignaturaForList Asignatura) {
-                //Funcion Actualizar
+                UpdateAsignatura(Asignatura);
             }
 
             @Override
@@ -69,5 +73,12 @@ public class ActivityAsignaturas extends AppCompatActivity {
         startActivity(new Intent(this, AddAsignaturaActivity.class));
     }
 
+    private void UpdateAsignatura(AsignaturaForList Asignatura) {
+        Intent intent = new Intent(this, UpdateAsignaturaActivity.class);
+
+        intent.putExtra("name", Asignatura.name);
+        intent.putExtra("codigo", Asignatura.codigo_asignatura);
+        startActivity(intent);
+    }
 
 }

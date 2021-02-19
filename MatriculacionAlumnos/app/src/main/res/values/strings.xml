@@ -9,4 +9,8 @@
     <string name="nombre_alumno">Nombre Alumno</string>
     <string name="apellidos_alumno">Apellidos alumno</string>
     <string name="dni_alumno">DNI alumno</string>
+    <string name="update_asignatura">Update Asignatura</string>
+    <string name="guardar">Guardar</string>
+    <string name="nombre_asignatura">Nombre asignatura</string>
+    <string name="codigo_asignatura">Codigo asignatura</string>
 </resources>

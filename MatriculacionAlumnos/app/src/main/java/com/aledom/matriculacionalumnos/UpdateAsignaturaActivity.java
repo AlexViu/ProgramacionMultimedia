@@ -5,14 +5,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaViewModel;
+import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaInsert;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaUpdate;
 
 import java.util.UUID;
 
 public class UpdateAsignaturaActivity extends AppCompatActivity {
+    EditText nameField, asignatura_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +28,27 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
         AsignaturaViewModel vm = new ViewModelProvider(this, factory).get(AsignaturaViewModel.class);
 
         setupCreateButton(vm);
+
+        //Asignamos los datos de la otra activity
+        nameField = (EditText)findViewById(R.id.name_field);
+        asignatura_code = (EditText)findViewById(R.id.codigo_asignatura);
+
+        String campo_name = getIntent().getStringExtra("name");
+        String campo_code = getIntent().getStringExtra("codigo");
+
+        asignatura_code.setText(campo_code);
+        nameField.setText(campo_name);
+
     }
 
     private void setupCreateButton(AsignaturaViewModel vm) {
-        findViewById(R.id.create_button).setOnClickListener(
+        findViewById(R.id.update_button).setOnClickListener(
                 view -> {
-                    // Obtener valor del campo de texto
-                    EditText nameField = findViewById(R.id.name_field);
+                    //Recogemos id del objeto
+
                     String name = nameField.getText().toString();
+                    String code = asignatura_code.getText().toString();
+                    int codigo = Integer.parseInt(code);
 
                     // Ignorar acción si hay 0 caracteres
                     if (name.isEmpty()) {
@@ -40,8 +56,7 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
                     }
 
                     // Crear entidad y guardarla
-                    String id = UUID.randomUUID().toString();
-                    AsignaturaUpdate asignatura = new AsignaturaUpdate(name);
+                    AsignaturaUpdate asignatura = new AsignaturaUpdate(codigo, name);
                     vm.updateAsignatura(asignatura);
 
                     // Ir a la lista

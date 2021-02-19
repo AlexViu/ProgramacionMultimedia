@@ -32,7 +32,10 @@ public class AddAsignaturaActivity extends AppCompatActivity {
                 view -> {
                     // Obtener valor del campo de texto
                     EditText nameField = findViewById(R.id.name_field);
+                    EditText asignatura_code = findViewById(R.id.codigo_asignatura);
                     String name = nameField.getText().toString();
+                    String code = asignatura_code.getText().toString();
+                    int codigo = Integer.parseInt(code);
 
                     // Ignorar acción si hay 0 caracteres
                     if (name.isEmpty()) {
@@ -41,7 +44,7 @@ public class AddAsignaturaActivity extends AppCompatActivity {
 
                     // Crear entidad y guardarla
                     String id = UUID.randomUUID().toString();
-                    AsignaturaInsert asignatura = new AsignaturaInsert(name);
+                    AsignaturaInsert asignatura = new AsignaturaInsert(codigo, name);
                     vm.insert(asignatura);
 
                     // Ir a la lista

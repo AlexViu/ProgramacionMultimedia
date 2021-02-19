@@ -32,9 +32,9 @@ public class AsignaturaRepository {
         );
     }
 
-    public void updateAsignatura(AsignaturaUpdate Asignatura) {
+    public void actualizar(AsignaturaUpdate asignatura) {
         MatriculacionDatabase.dbExecutor.execute(
-                () -> asignaturaDao.updateAsignatura(Asignatura)
+                () -> asignaturaDao.actualizar(asignatura.codigo_asignatura, asignatura.name)
         );
     }
 

@@ -22,7 +22,7 @@ public class ActivityAlumnos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumnos);
 
-        getSupportActionBar().setTitle("Asignaturas");
+        getSupportActionBar().setTitle("Alumnos");
 
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
@@ -45,7 +45,7 @@ public class ActivityAlumnos extends AppCompatActivity {
         mAdapter.setItemListener(new AlumnoAdapter.ItemListener() {
 
             @Override
-            public void onUpdateIconClicked(AlumnosForList Asignatura) {
+            public void onUpdateIconClicked(AlumnosForList Alumno) {
 
             }
 

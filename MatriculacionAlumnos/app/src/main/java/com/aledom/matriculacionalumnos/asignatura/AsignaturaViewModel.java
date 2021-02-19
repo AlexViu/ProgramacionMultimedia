@@ -33,7 +33,8 @@ public class AsignaturaViewModel extends AndroidViewModel {
     }
 
     public void updateAsignatura(AsignaturaUpdate Asignatura) {
-        mRepository.updateAsignatura(Asignatura);
+        AsignaturaId id = new AsignaturaId(Asignatura.id);
+        mRepository.actualizar(Asignatura);
     }
 
     public void deleteAsignatura(AsignaturaForList Asignatura) {

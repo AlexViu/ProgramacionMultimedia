@@ -9,10 +9,16 @@ public class Asignatura {
     private int id;
 
     @NonNull
+    @ColumnInfo(name = "codigo_asignatura")
+    private int codigo_asignatura;
+
+    @NonNull
     @ColumnInfo(name = "name")
     private final String name;
 
-    public Asignatura(@NonNull String name) {
+
+    public Asignatura(int codigo_asignatura, @NonNull String name) {
+        this.codigo_asignatura = codigo_asignatura;
         this.name = name;
     }
 
@@ -22,6 +28,10 @@ public class Asignatura {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCodigo_asignatura() {
+        return codigo_asignatura;
     }
 
     @NonNull

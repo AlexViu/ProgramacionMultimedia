@@ -54,11 +54,12 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
 
     public class AsignaturaViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView asignatura_name;
+        private final TextView asignatura_name, asignatura_code;
         private final ImageView delete, update;
 
         public AsignaturaViewHolder(@NonNull View itemView) {
             super(itemView);
+            asignatura_code = itemView.findViewById(R.id.codigo_asignatura);
             asignatura_name = itemView.findViewById(R.id.name);
             delete = itemView.findViewById(R.id.delete_button);
             update = itemView.findViewById(R.id.update_button);
@@ -85,6 +86,8 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
         }
 
         public void bind(AsignaturaForList item) {
+            String codigo = "" + item.codigo_asignatura;
+            asignatura_code.setText(codigo);
             asignatura_name.setText(item.name);
 
         }

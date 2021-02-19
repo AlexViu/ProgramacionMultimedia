@@ -25,7 +25,7 @@ public abstract class MatriculacionDatabase extends RoomDatabase {
     public abstract AsignaturaDao AsignaturaDao();
     public abstract AlumnoDao AlumnoDao();
 
-    private static final String DATABASE_NAME = "Matriculacion-bd2";
+    private static final String DATABASE_NAME = "Matriculacion-bd3";
 
     private static MatriculacionDatabase INSTANCE;
 
@@ -55,15 +55,7 @@ public abstract class MatriculacionDatabase extends RoomDatabase {
                 super.onCreate(db);
 
                 dbExecutor.execute(() -> {
-                    AsignaturaDao dao = INSTANCE.AsignaturaDao();
 
-                    List<Asignatura> lists = new ArrayList<>();
-                    for (int i = 0; i < 5; i++) {
-                        String id = UUID.randomUUID().toString();
-                        lists.add(new Asignatura( "Lista " + (i+1)));
-                    }
-
-                    dao.insertAsignaturas(lists);
 
                 });
             }

@@ -20,6 +20,9 @@ public interface AsignaturaDao {
     @Query("SELECT * FROM asignatura")
     LiveData<List<AsignaturaForList>> getAll();
 
+    @Query(("UPDATE asignatura SET name=:name WHERE codigo_asignatura = :codigo"))
+    void actualizar(int codigo, String name);
+
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = Asignatura.class)
     void insert(AsignaturaInsert Asignatura);
 
