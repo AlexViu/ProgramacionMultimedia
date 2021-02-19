@@ -39,6 +39,8 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
         asignatura_code.setText(campo_code);
         nameField.setText(campo_name);
 
+        asignatura_code.setEnabled(false);
+
     }
 
     private void setupCreateButton(AsignaturaViewModel vm) {

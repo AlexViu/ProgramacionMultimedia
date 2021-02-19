@@ -76,8 +76,10 @@ public class ActivityAsignaturas extends AppCompatActivity {
     private void UpdateAsignatura(AsignaturaForList Asignatura) {
         Intent intent = new Intent(this, UpdateAsignaturaActivity.class);
 
+        String codigo = String.valueOf(Asignatura.codigo_asignatura);
+
         intent.putExtra("name", Asignatura.name);
-        intent.putExtra("codigo", Asignatura.codigo_asignatura);
+        intent.putExtra("codigo", codigo);
         startActivity(intent);
     }
 
