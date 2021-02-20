@@ -12,7 +12,6 @@ import java.util.List;
 
 public class AsignaturaRepository {
 
-    //variables
     private final LiveData<List<AsignaturaForList>> AsignaturaLists;
     private final AsignaturaDao asignaturaDao;
 
@@ -22,6 +21,7 @@ public class AsignaturaRepository {
         AsignaturaLists = asignaturaDao.getAll();
     }
 
+    //Metodos para ejecutar las querys del DAO
     public LiveData<List<AsignaturaForList>> getAllAsignaturas() {
         return AsignaturaLists;
     }

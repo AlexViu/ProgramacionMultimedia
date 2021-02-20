@@ -28,6 +28,7 @@ public class UpdateAlumnoActivity extends AppCompatActivity {
 
         setupCreateButton(vm);
 
+        //Recogemos datos y añadimos la informacion a los edittext
         nameField = findViewById(R.id.name_alumno);
         apellidoField = findViewById(R.id.apellido_alumno);
         dniField = findViewById(R.id.dni_alumno);

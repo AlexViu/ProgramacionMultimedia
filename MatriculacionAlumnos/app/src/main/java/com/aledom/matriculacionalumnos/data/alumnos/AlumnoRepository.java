@@ -22,6 +22,7 @@ public class AlumnoRepository {
         AlumnosLists = alumnoDao.getAll();
     }
 
+    //Metodos para ejecutar las querys del DAO
     public LiveData<List<AlumnosForList>> getAllAlumnos() {
         return AlumnosLists;
     }

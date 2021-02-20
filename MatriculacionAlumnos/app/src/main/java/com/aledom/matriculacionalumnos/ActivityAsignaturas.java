@@ -69,10 +69,12 @@ public class ActivityAsignaturas extends AppCompatActivity {
         findViewById(R.id.floating_action_button).setOnClickListener(view -> addNewAsignatura());
     }
 
+    //Metodo para ir al activity de añadir asignaturas
     private void addNewAsignatura() {
         startActivity(new Intent(this, AddAsignaturaActivity.class));
     }
 
+    //Metodo para ir al activity de actualizar asignaturas
     private void UpdateAsignatura(AsignaturaForList Asignatura) {
         Intent intent = new Intent(this, UpdateAsignaturaActivity.class);
 

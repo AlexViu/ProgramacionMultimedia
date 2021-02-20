@@ -9,9 +9,7 @@ import android.os.Bundle;
 
 import com.aledom.matriculacionalumnos.alumnos.AlumnoViewModel;
 import com.aledom.matriculacionalumnos.alumnos.AlumnosForList;
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoAdapter;
-import com.aledom.matriculacionalumnos.data.alumnos_asignatura.AlumnosAsignatura;
 
 public class ActivityAlumnos extends AppCompatActivity {
 
@@ -73,11 +71,12 @@ public class ActivityAlumnos extends AppCompatActivity {
     private void setupFab() {
         findViewById(R.id.floating_action_button).setOnClickListener(view -> addNewAlumno());
     }
-
+    //Metodo para ir al activity de añadir alumnos
     private void addNewAlumno() {
         startActivity(new Intent(this, AddAlumnoActivity.class));
     }
 
+    //Metodo para ir al activity de actualizar alumnos
     private void UpdateAlumno(AlumnosForList Alumnos) {
         Intent intent = new Intent(this, UpdateAlumnoActivity.class);
         String idal = String.valueOf(Alumnos.id);
@@ -89,6 +88,7 @@ public class ActivityAlumnos extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Metodo para ir al activity de añadir asignaturas a los alumnos
     private void addAsignatura(AlumnosForList Alumnos) {
         Intent intent = new Intent(this, AlumnoAsignaturaActivity.class);
         String idal = String.valueOf(Alumnos.id);

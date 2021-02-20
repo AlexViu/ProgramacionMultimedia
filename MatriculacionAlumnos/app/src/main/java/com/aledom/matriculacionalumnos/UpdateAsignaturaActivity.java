@@ -29,7 +29,7 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
 
         setupCreateButton(vm);
 
-        //Asignamos los datos de la otra activity
+        //Recogemos datos y añadimos la informacion a los edittext
         nameField = (EditText)findViewById(R.id.name_field);
         asignatura_code = (EditText)findViewById(R.id.codigo_asignatura);
 

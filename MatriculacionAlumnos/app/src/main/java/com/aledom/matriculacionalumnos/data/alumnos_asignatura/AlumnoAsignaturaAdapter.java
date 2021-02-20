@@ -10,13 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aledom.matriculacionalumnos.R;
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
-import com.aledom.matriculacionalumnos.data.asignatura.AsiganturaAdapter;
+import com.aledom.matriculacionalumnos.alumnos_asignaturas.AlumnosAsignaturasForList;
 
 import java.util.List;
 
 public class AlumnoAsignaturaAdapter extends RecyclerView.Adapter<AlumnoAsignaturaAdapter.AlumnoAsignaturaViewHolder> {
-    private List<AsignaturaForList> Asignaturas;
+    private List<AlumnosAsignaturasForList> AlumnosAsignaturas;
     private AlumnoAsignaturaAdapter.ItemListener mItemListener;
 
 
@@ -31,17 +30,17 @@ public class AlumnoAsignaturaAdapter extends RecyclerView.Adapter<AlumnoAsignatu
 
     @Override
     public void onBindViewHolder(@NonNull AlumnoAsignaturaAdapter.AlumnoAsignaturaViewHolder holder, int position) {
-        AsignaturaForList item = Asignaturas.get(position);
+        AlumnosAsignaturasForList item = AlumnosAsignaturas.get(position);
         holder.bind(item);
     }
 
     @Override
     public int getItemCount() {
-        return Asignaturas == null ? 0 : Asignaturas.size();
+        return AlumnosAsignaturas == null ? 0 : AlumnosAsignaturas.size();
     }
 
-    public void setItems(List<AsignaturaForList> items) {
-        Asignaturas = items;
+    public void setItems(List<AlumnosAsignaturasForList> items) {
+        AlumnosAsignaturas = items;
         notifyDataSetChanged();
     }
 
@@ -50,7 +49,7 @@ public class AlumnoAsignaturaAdapter extends RecyclerView.Adapter<AlumnoAsignatu
     }
 
     public interface ItemListener {
-        void onDeleteIconClicked(AsignaturaForList Asignatura);
+        void onDeleteIconClicked(AlumnosAsignaturasForList Asignatura);
     }
 
     public class AlumnoAsignaturaViewHolder extends RecyclerView.ViewHolder {
@@ -71,7 +70,7 @@ public class AlumnoAsignaturaAdapter extends RecyclerView.Adapter<AlumnoAsignatu
 
         private void manageEvents(View view) {
             if (mItemListener != null) {
-                AsignaturaForList clickedItem = Asignaturas.get(getAdapterPosition());
+                AlumnosAsignaturasForList clickedItem = AlumnosAsignaturas.get(getAdapterPosition());
 
                 if (view.getId() == R.id.delete_button) {
                     mItemListener.onDeleteIconClicked(clickedItem);
@@ -80,7 +79,7 @@ public class AlumnoAsignaturaAdapter extends RecyclerView.Adapter<AlumnoAsignatu
             }
         }
 
-        public void bind(AsignaturaForList item) {
+        public void bind(AlumnosAsignaturasForList item) {
             String codigo = "" + item.codigo_asignatura;
             asignatura_code.setText(codigo);
             asignatura_name.setText(item.name);

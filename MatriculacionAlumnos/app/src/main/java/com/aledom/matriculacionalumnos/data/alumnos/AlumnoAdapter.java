@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aledom.matriculacionalumnos.R;
 import com.aledom.matriculacionalumnos.alumnos.AlumnosForList;
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
-import com.aledom.matriculacionalumnos.data.asignatura.AsiganturaAdapter;
 
 import java.util.List;
 
@@ -47,6 +45,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
         notifyDataSetChanged();
     }
 
+    //listener de los botones de la lista
     public void setItemListener(AlumnoAdapter.ItemListener listener) {
         mItemListener = listener;
     }
@@ -57,6 +56,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
         void onAsignaturasIconClicked(AlumnosForList Alumno);
     }
 
+    //Obtener datos de los elementos
     public class AlumnoViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView alumno_name, alumno_apellido, alumno_dni;
@@ -78,6 +78,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
 
         }
 
+        //Funciones de los botones de la lista
         private void manageEvents(View view) {
             if (mItemListener != null) {
                 AlumnosForList clickedItem = Alumnos.get(getAdapterPosition());
@@ -97,6 +98,7 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
             }
         }
 
+        //Añadir informacion en la lista
         public void bind(AlumnosForList item) {
             alumno_name.setText(item.name);
             alumno_apellido.setText(item.apellidos);

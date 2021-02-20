@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
-import com.aledom.matriculacionalumnos.asignatura.AsignaturaViewModel;
+import com.aledom.matriculacionalumnos.alumnos_asignaturas.AlumnosAsignaturasForList;
+import com.aledom.matriculacionalumnos.alumnos_asignaturas.AlumnosAsignaturasViewModel;
+
 import com.aledom.matriculacionalumnos.data.alumnos_asignatura.AlumnoAsignaturaAdapter;
-import com.aledom.matriculacionalumnos.data.asignatura.AsiganturaAdapter;
+
 
 public class AlumnoAsignaturaActivity extends AppCompatActivity {
 
-    private AsignaturaViewModel mViewModel;
+    private AlumnosAsignaturasViewModel mViewModel;
     private RecyclerView mList;
     private AlumnoAsignaturaAdapter mAdapter;
-    private String icon_identity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class AlumnoAsignaturaActivity extends AppCompatActivity {
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
 
         mViewModel = new ViewModelProvider(this, factory)
-                .get(AsignaturaViewModel.class);
+                .get(AlumnosAsignaturasViewModel.class);
 
         setupList();
 
@@ -46,25 +46,23 @@ public class AlumnoAsignaturaActivity extends AppCompatActivity {
 
         mAdapter.setItemListener(new AlumnoAsignaturaAdapter.ItemListener() {
 
-
             @Override
-            public void onDeleteIconClicked(AsignaturaForList Asignatura) {
+            public void onDeleteIconClicked(AlumnosAsignaturasForList Asignatura) {
 
             }
+
         });
 
-        mViewModel.getAllAsignaturas().observe(this, mAdapter::setItems);
-
+       // mViewModel.getAllAlumnosAsignaturas().observe(this, mAdapter::setItems);
 
     }
 
     private void setupFab() {
-        //findViewById(R.id.floating_action_button).setOnClickListener(view -> addNewAsignatura());
+        findViewById(R.id.floating_action_button).setOnClickListener(view -> addNewAsignatura());
     }
 
     private void addNewAsignatura() {
-        String campo_id = getIntent().getStringExtra("id");
-        //startActivity(new Intent(this, AddAsignaturaActivity.class));
+        startActivity(new Intent(this, AddAlumnoAsignatura.class));
     }
 
 }

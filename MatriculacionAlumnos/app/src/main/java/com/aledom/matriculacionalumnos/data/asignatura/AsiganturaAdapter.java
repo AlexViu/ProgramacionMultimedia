@@ -42,7 +42,7 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
         Asignaturas = items;
         notifyDataSetChanged();
     }
-
+    //listener de los botones de la lista
     public void setItemListener(ItemListener listener) {
         mItemListener = listener;
     }
@@ -52,6 +52,7 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
         void onDeleteIconClicked(AsignaturaForList Asignatura);
     }
 
+    //Obtener datos de los elementos
     public class AsignaturaViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView asignatura_name, asignatura_code;
@@ -70,6 +71,7 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
 
         }
 
+        //Funciones de los botones de la lista
         private void manageEvents(View view) {
             if (mItemListener != null) {
                 AsignaturaForList clickedItem = Asignaturas.get(getAdapterPosition());
@@ -85,11 +87,11 @@ public class AsiganturaAdapter extends RecyclerView.Adapter<AsiganturaAdapter.As
             }
         }
 
+        //Añadir informacion en la lista
         public void bind(AsignaturaForList item) {
             String codigo = "" + item.codigo_asignatura;
             asignatura_code.setText(codigo);
             asignatura_name.setText(item.name);
-
         }
     }
 }
