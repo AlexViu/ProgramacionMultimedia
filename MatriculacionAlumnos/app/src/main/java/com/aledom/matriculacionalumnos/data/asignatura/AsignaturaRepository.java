@@ -34,7 +34,7 @@ public class AsignaturaRepository {
 
     public void actualizar(AsignaturaUpdate asignatura) {
         MatriculacionDatabase.dbExecutor.execute(
-                () -> asignaturaDao.actualizar(asignatura.codigo_asignatura, asignatura.name)
+                () -> asignaturaDao.actualizar(asignatura.id, asignatura.codigo_asignatura, asignatura.name)
         );
     }
 

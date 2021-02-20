@@ -52,14 +52,15 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
     }
 
     public interface ItemListener {
-        void onUpdateIconClicked(AlumnosForList Asignatura);
-        void onDeleteIconClicked(AlumnosForList Asignatura);
+        void onUpdateIconClicked(AlumnosForList Alumno);
+        void onDeleteIconClicked(AlumnosForList Alumno);
+        void onAsignaturasIconClicked(AlumnosForList Alumno);
     }
 
     public class AlumnoViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView alumno_name, alumno_apellido, alumno_dni;
-        private final ImageView delete, update;
+        private final ImageView delete, update, asignatura;
 
         public AlumnoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,9 +69,11 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
             alumno_dni = itemView.findViewById(R.id.dni);
             delete = itemView.findViewById(R.id.delete_button);
             update = itemView.findViewById(R.id.update_button);
+            asignatura = itemView.findViewById(R.id.asignatura_button);
 
             delete.setOnClickListener(this::manageEvents);
             update.setOnClickListener(this::manageEvents);
+            asignatura.setOnClickListener(this::manageEvents);
             itemView.setOnClickListener(this::manageEvents);
 
         }
@@ -85,6 +88,10 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
                 }
                 if (view.getId() == R.id.update_button) {
                     mItemListener.onUpdateIconClicked(clickedItem);
+                    return;
+                }
+                if (view.getId() == R.id.asignatura_button) {
+                    mItemListener.onAsignaturasIconClicked(clickedItem);
                     return;
                 }
             }

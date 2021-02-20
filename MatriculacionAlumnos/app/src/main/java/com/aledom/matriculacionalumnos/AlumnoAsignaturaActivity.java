@@ -6,25 +6,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.widget.Toast;
 
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaViewModel;
+import com.aledom.matriculacionalumnos.data.alumnos_asignatura.AlumnoAsignaturaAdapter;
 import com.aledom.matriculacionalumnos.data.asignatura.AsiganturaAdapter;
-import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 
+public class AlumnoAsignaturaActivity extends AppCompatActivity {
 
-public class ActivityAsignaturas extends AppCompatActivity {
     private AsignaturaViewModel mViewModel;
     private RecyclerView mList;
-    private AsiganturaAdapter mAdapter;
+    private AlumnoAsignaturaAdapter mAdapter;
     private String icon_identity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asignaturas);
+        setContentView(R.layout.activity_alumno_asignatura);
 
         getSupportActionBar().setTitle("Asignaturas");
 
@@ -43,20 +41,15 @@ public class ActivityAsignaturas extends AppCompatActivity {
 
     private void setupList() {
         mList = findViewById(R.id.list);
-        mAdapter = new AsiganturaAdapter();
+        mAdapter = new AlumnoAsignaturaAdapter();
         mList.setAdapter(mAdapter);
 
-        mAdapter.setItemListener(new AsiganturaAdapter.ItemListener() {
+        mAdapter.setItemListener(new AlumnoAsignaturaAdapter.ItemListener() {
 
-            @Override
-            public void onUpdateIconClicked(AsignaturaForList Asignatura) {
-                UpdateAsignatura(Asignatura);
-            }
 
             @Override
             public void onDeleteIconClicked(AsignaturaForList Asignatura) {
-                int id = Asignatura.id;
-                mViewModel.deleteAsignatura(Asignatura);
+
             }
         });
 
@@ -66,23 +59,12 @@ public class ActivityAsignaturas extends AppCompatActivity {
     }
 
     private void setupFab() {
-        findViewById(R.id.floating_action_button).setOnClickListener(view -> addNewAsignatura());
+        //findViewById(R.id.floating_action_button).setOnClickListener(view -> addNewAsignatura());
     }
 
     private void addNewAsignatura() {
-        startActivity(new Intent(this, AddAsignaturaActivity.class));
-    }
-
-    private void UpdateAsignatura(AsignaturaForList Asignatura) {
-        Intent intent = new Intent(this, UpdateAsignaturaActivity.class);
-
-        String codigo = String.valueOf(Asignatura.codigo_asignatura);
-        String id = String.valueOf(Asignatura.id);
-
-        intent.putExtra("id", id);
-        intent.putExtra("name", Asignatura.name);
-        intent.putExtra("codigo", codigo);
-        startActivity(intent);
+        String campo_id = getIntent().getStringExtra("id");
+        //startActivity(new Intent(this, AddAsignaturaActivity.class));
     }
 
 }

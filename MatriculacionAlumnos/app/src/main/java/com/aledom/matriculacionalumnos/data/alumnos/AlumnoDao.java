@@ -15,11 +15,11 @@ import java.util.List;
 @Dao
 public interface AlumnoDao {
 
-    @Query("SELECT * FROM alumno")
+    @Query("SELECT * FROM alumno ORDER BY apellidos ASC")
     LiveData<List<AlumnosForList>> getAll();
 
-    @Query(("UPDATE alumno SET name=:name, apellidos=:apellidos WHERE dni = :dni"))
-    void actualizar(String name, String apellidos, String dni);
+    @Query(("UPDATE alumno SET name=:name, apellidos=:apellidos, dni = :dni WHERE id =:id"))
+    void actualizar(int id, String name, String apellidos, String dni);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = Alumno.class)
     void insert(AlumnoInsert Alumno);

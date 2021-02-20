@@ -40,25 +40,25 @@ public class UpdateAlumnoActivity extends AppCompatActivity {
         apellidoField.setText(campo_apellidos);
         dniField.setText(campo_dni);
 
-        dniField.setEnabled(false);
     }
 
     private void setupCreateButton(AlumnoViewModel vm) {
         findViewById(R.id.create_button_alum).setOnClickListener(
                 view -> {
                     // Obtener valor del campo de texto
-
+                    String campo_id = getIntent().getStringExtra("id");
                     String name = nameField.getText().toString();
                     String apellido = apellidoField.getText().toString();
                     String dni = dniField.getText().toString();
 
+                    int id = Integer.parseInt(campo_id);
                     // Ignorar acción si hay 0 caracteres
                     if (name.isEmpty()) {
                         return;
                     }
 
                     // Crear entidad y guardarla
-                    AlumnoUpdate alumno = new AlumnoUpdate(name, apellido, dni);
+                    AlumnoUpdate alumno = new AlumnoUpdate(id, name, apellido, dni);
                     vm.updateAlumno(alumno);
 
                     // Ir a la lista

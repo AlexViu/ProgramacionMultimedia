@@ -5,7 +5,8 @@ public class AsignaturaUpdate {
     int codigo_asignatura;
     String name;
 
-    public AsignaturaUpdate(int codigo_asignatura, String name) {
+    public AsignaturaUpdate(int id, int codigo_asignatura, String name) {
+        this.id = id;
         this.codigo_asignatura = codigo_asignatura;
         this.name = name;
     }

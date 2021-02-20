@@ -11,6 +11,7 @@ import com.aledom.matriculacionalumnos.alumnos.AlumnoViewModel;
 import com.aledom.matriculacionalumnos.alumnos.AlumnosForList;
 import com.aledom.matriculacionalumnos.asignatura.AsignaturaForList;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoAdapter;
+import com.aledom.matriculacionalumnos.data.alumnos_asignatura.AlumnosAsignatura;
 
 public class ActivityAlumnos extends AppCompatActivity {
 
@@ -56,6 +57,11 @@ public class ActivityAlumnos extends AppCompatActivity {
                 mViewModel.deleteAlumno(Alumno);
             }
 
+            @Override
+            public void onAsignaturasIconClicked(AlumnosForList Alumno) {
+                addAsignatura(Alumno);
+            }
+
 
         });
 
@@ -74,10 +80,21 @@ public class ActivityAlumnos extends AppCompatActivity {
 
     private void UpdateAlumno(AlumnosForList Alumnos) {
         Intent intent = new Intent(this, UpdateAlumnoActivity.class);
+        String idal = String.valueOf(Alumnos.id);
 
+        intent.putExtra("id", idal);
         intent.putExtra("name", Alumnos.name);
         intent.putExtra("apellidos", Alumnos.apellidos);
         intent.putExtra("dni", Alumnos.dni);
+        startActivity(intent);
+    }
+
+    private void addAsignatura(AlumnosForList Alumnos) {
+        Intent intent = new Intent(this, AlumnoAsignaturaActivity.class);
+        String idal = String.valueOf(Alumnos.id);
+
+        intent.putExtra("id", idal);
+
         startActivity(intent);
     }
 }

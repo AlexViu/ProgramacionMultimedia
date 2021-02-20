@@ -39,8 +39,6 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
         asignatura_code.setText(campo_code);
         nameField.setText(campo_name);
 
-        asignatura_code.setEnabled(false);
-
     }
 
     private void setupCreateButton(AsignaturaViewModel vm) {
@@ -51,6 +49,8 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
                     String name = nameField.getText().toString();
                     String code = asignatura_code.getText().toString();
                     int codigo = Integer.parseInt(code);
+                    String campo_id = getIntent().getStringExtra("id");
+                    int id = Integer.parseInt(campo_id);
 
                     // Ignorar acción si hay 0 caracteres
                     if (name.isEmpty()) {
@@ -58,7 +58,7 @@ public class UpdateAsignaturaActivity extends AppCompatActivity {
                     }
 
                     // Crear entidad y guardarla
-                    AsignaturaUpdate asignatura = new AsignaturaUpdate(codigo, name);
+                    AsignaturaUpdate asignatura = new AsignaturaUpdate(id, codigo, name);
                     vm.updateAsignatura(asignatura);
 
                     // Ir a la lista

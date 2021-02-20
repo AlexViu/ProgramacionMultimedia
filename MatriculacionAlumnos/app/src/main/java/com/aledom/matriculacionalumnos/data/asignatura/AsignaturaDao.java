@@ -17,11 +17,11 @@ import java.util.List;
 @Dao
 public interface AsignaturaDao {
 
-    @Query("SELECT * FROM asignatura")
+    @Query("SELECT * FROM asignatura ORDER BY codigo_asignatura ASC")
     LiveData<List<AsignaturaForList>> getAll();
 
-    @Query(("UPDATE asignatura SET name=:name WHERE codigo_asignatura = :codigo"))
-    void actualizar(int codigo, String name);
+    @Query(("UPDATE asignatura SET name=:name, codigo_asignatura = :codigo WHERE id = :id"))
+    void actualizar(int id, int codigo, String name);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE, entity = Asignatura.class)
     void insert(AsignaturaInsert Asignatura);

@@ -10,6 +10,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.aledom.matriculacionalumnos.data.alumnos.Alumno;
 import com.aledom.matriculacionalumnos.data.alumnos.AlumnoDao;
+import com.aledom.matriculacionalumnos.data.alumnos_asignatura.AlumnosAsignatura;
+import com.aledom.matriculacionalumnos.data.alumnos_asignatura.AlumnosAsignaturaDao;
 import com.aledom.matriculacionalumnos.data.asignatura.Asignatura;
 import com.aledom.matriculacionalumnos.data.asignatura.AsignaturaDao;
 
@@ -19,13 +21,14 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Asignatura.class, Alumno.class}, version = 1, exportSchema = false)
+@Database(entities = {Asignatura.class, Alumno.class, AlumnosAsignatura.class}, version = 1, exportSchema = false)
 public abstract class MatriculacionDatabase extends RoomDatabase {
 
     public abstract AsignaturaDao AsignaturaDao();
     public abstract AlumnoDao AlumnoDao();
+    public abstract AlumnosAsignaturaDao AlumnoAsignaturaDao();
 
-    private static final String DATABASE_NAME = "Matriculacion-bd3";
+    private static final String DATABASE_NAME = "Matriculacion-bd4";
 
     private static MatriculacionDatabase INSTANCE;
 

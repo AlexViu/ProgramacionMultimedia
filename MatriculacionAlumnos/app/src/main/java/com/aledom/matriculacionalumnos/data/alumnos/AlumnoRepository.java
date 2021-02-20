@@ -34,7 +34,7 @@ public class AlumnoRepository {
 
     public void actualizar(AlumnoUpdate alumno) {
         MatriculacionDatabase.dbExecutor.execute(
-                () -> alumnoDao.actualizar(alumno.name, alumno.apellidos, alumno.dni)
+                () -> alumnoDao.actualizar(alumno.id, alumno.name, alumno.apellidos, alumno.dni)
         );
     }
 
